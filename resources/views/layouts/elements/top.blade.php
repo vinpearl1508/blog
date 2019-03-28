@@ -35,8 +35,17 @@
                 <div class="col-sm-12">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
+                            @if (Route::has('login'))
+                            @auth
+                            <li><a href="{{ route('home') }}"><i>Hello <b>{{ Auth::user()->name }}</b>!</i></a></li>
+                            @else
                             <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+
+                            @if (Route::has('register'))
                             <li><a href="{{ route('register') }}"><i class="fa fa-user"></i> Register</a></li>
+                            @endif
+                            @endauth
+                            @endif
                         </ul>
                     </div>
                 </div>
