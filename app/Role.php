@@ -14,7 +14,7 @@ class Role extends Model
     ];
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_role');
+        return $this->belongsToMany(User::class, 'role_user');
     }
 
     public function hasAccess(array $permissions) : bool
