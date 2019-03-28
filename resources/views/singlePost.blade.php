@@ -2,7 +2,6 @@
 @section('content')
 <div class="blog-post-area">
     <h2 class="title text-center">Latest From our Blog</h2>
-    @foreach($posts as $post)
     <div class="single-blog-post">
         <h3>{{ $post->title }}</h3>
         <div class="post-meta">
@@ -19,16 +18,21 @@
                 <i class="fa fa-star-half-o"></i>
             </span>
         </div>
+        <p>{{ $post->description }}</p>
+        <p></p>
         <a href="#">
             <img src="{{ $post->thumbnail }}" alt="">
         </a>
-        <p>{{ $post->description }}</p>
-        <a class="btn btn-primary" href="{{ route('singlePost', $post->id) }}">Read More</a>
-    </div>
-    @endforeach
-    <div class="pagination-area">
-		{{ $posts->links() }}
+        <p></p>
+        <p>{{ $post->body }}</p>
+        <div class="pager-area">
+            <ul class="pager pull-right">
+                <li><a href="#">Pre</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </div>
     </div>
 </div>
-
+@include("layouts.elements.response")
+@include("layouts.elements.replay")
 @endsection 

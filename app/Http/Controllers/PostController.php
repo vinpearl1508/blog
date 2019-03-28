@@ -15,4 +15,9 @@ class PostController extends Controller
         return view('welcome', compact('posts'));
     }
 
+    public function show($id)
+    {
+        $post = Post::published()->find($id);
+        return view('singlePost', compact('post'));
+    }
 }
