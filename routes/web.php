@@ -21,3 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'PostController@index');
 Route::get('/singlePost/{id}', 'PostController@show')->name('singlePost');
+
+Route::prefix('api')->group(function () {
+    Route::apiResources([
+        'categories' => 'Api\CategoryController',
+        'posts' => 'Api\PostController',
+        'users' => 'Api\UserController',
+    ]);
+});
+

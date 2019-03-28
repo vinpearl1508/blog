@@ -27,7 +27,7 @@
     </div>
     @endforeach
     <div class="pagination-area">
-		{{ $posts->links() }}
+        {{ $posts->links() }}
     </div>
 </div>
 
