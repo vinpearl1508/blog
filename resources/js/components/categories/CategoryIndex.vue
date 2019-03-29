@@ -12,7 +12,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(category, index) in categories">
+            <tr v-for="(category, index) in categories" :key="(category, index).id">
               <td>{{ category.name }}</td>
               <td>{{ category.slug }}</td>
               <td>

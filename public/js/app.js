@@ -1831,8 +1831,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       category: {
-        name: '',
-        slug: ''
+        name: "",
+        slug: ""
       }
     };
   },
@@ -1841,9 +1841,9 @@ __webpack_require__.r(__webpack_exports__);
       event.preventDefault();
       var app = this;
       var newCategory = app.category;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/categories', newCategory).then(function (resp) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/categories", newCategory).then(function (resp) {
         app.$router.push({
-          path: '/categories'
+          path: "/categories"
         });
       }).catch(function (resp) {
         console.log(resp);
@@ -2066,6 +2066,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2075,7 +2078,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var app = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/draft').then(function (resp) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/draft").then(function (resp) {
       app.posts = resp.data;
     }).catch(function (resp) {
       console.log(resp);
@@ -2086,7 +2089,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteEntry: function deleteEntry(id, index) {
       if (confirm("Do you really want to delete it?")) {
         var app = this;
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete('/api/posts/' + id).then(function (resp) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete("/api/posts/" + id).then(function (resp) {
           app.posts.splice(index, 1);
         }).catch(function (resp) {
           alert("Could not delete post");
@@ -2107,8 +2110,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
-/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2176,7 +2179,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1___default.a,
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a,
       editorConfig: {//
       },
       // tags: {
@@ -2278,8 +2281,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
-/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2354,12 +2364,12 @@ __webpack_require__.r(__webpack_exports__);
     var app = this;
     var id = app.$route.params.id;
     app.post.id = id;
-    this.axios.get('/api/posts/' + id).then(function (resp) {
+    this.axios.get("/api/posts/" + id).then(function (resp) {
       app.post = resp.data;
     }).catch(function () {
       alert("Could not load your post");
     });
-    this.axios.get('/api/categories').then(function (resp) {
+    this.axios.get("/api/categories").then(function (resp) {
       app.categories = resp.data;
     }).catch(function (resp) {
       console.log(resp);
@@ -2368,7 +2378,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1___default.a,
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a,
       editorConfig: {//
       },
       // tags: {
@@ -2377,19 +2387,19 @@ __webpack_require__.r(__webpack_exports__);
       //     slug: ''
       // },
       categories: {
-        id: '',
-        name: '',
-        slug: ''
+        id: "",
+        name: "",
+        slug: ""
       },
       post: {
-        id: '',
-        title: '',
-        slug: '',
-        thumbnail: '',
-        description: '',
-        category_id: '',
-        content: '',
-        published: ''
+        id: "",
+        title: "",
+        slug: "",
+        thumbnail: "",
+        description: "",
+        category_id: "",
+        body: "",
+        published: ""
       }
     };
   },
@@ -2418,19 +2428,19 @@ __webpack_require__.r(__webpack_exports__);
       var thumbnail = document.getElementById("thumbnail").files[0];
 
       if (typeof thumbnail != "undefined") {
-        formData.append('thumbnail', thumbnail, thumbnail.name);
+        formData.append("thumbnail", thumbnail, thumbnail.name);
       }
 
-      formData.append('_method', 'PATCH');
-      formData.append('title', this.post.title);
-      formData.append('slug', this.post.slug);
-      formData.append('description', this.post.description);
-      formData.append('content', this.post.content);
-      formData.append('category_id', this.post.category_id);
-      formData.append('published', this.post.published);
-      this.axios.post("/api/posts/".concat(app.post.id), formData, {
+      formData.append("_method", "PATCH");
+      formData.append("title", this.post.title);
+      formData.append("slug", this.post.slug);
+      formData.append("description", this.post.description);
+      formData.append("body", this.post.body);
+      formData.append("category_id", this.post.category_id);
+      formData.append("published", this.post.published);
+      this.axios.post('/api/posts/${app.post.id}', formData, {
         headers: {
-          'content-type': 'multipart/form-data'
+          "content-type": "multipart/form-data"
         }
       }).then(function (resp) {
         alert(resp.data.message); // app.$router.replace('/posts');
@@ -2710,7 +2720,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.img-responsive {\n    width: 100px;\n}\n", ""]);
+exports.push([module.i, "\n.img-responsive {\n  width: 100px;\n}\n", ""]);
 
 // exports
 
@@ -3897,9 +3907,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
   !*** ./node_modules/vue-axios/dist/vue-axios.min.js ***!
   \******************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\VienHT\\code\\blog\\node_modules\\vue-axios\\dist\\vue-axios.min.js'");
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o};!function(){function o(e,t){if(!o.installed){if(o.installed=!0,!t)return void console.error("You have to install axios");e.axios=t,Object.defineProperties(e.prototype,{axios:{get:function(){return t}},$http:{get:function(){return t}}})}}"object"==( false?undefined:_typeof(exports))?module.exports=o: true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return o}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):undefined}();
 
 /***/ }),
 
@@ -4193,7 +4205,7 @@ var render = function() {
             _c(
               "tbody",
               _vm._l(_vm.categories, function(category, index) {
-                return _c("tr", [
+                return _c("tr", { key: (category, index).id }, [
                   _c("td", [_vm._v(_vm._s(category.name))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(category.slug))]),
@@ -4288,7 +4300,7 @@ var render = function() {
           _c(
             "tbody",
             _vm._l(_vm.posts, function(post, index) {
-              return _c("tr", [
+              return _c("tr", { key: (post, index).id }, [
                 _c("td", [_vm._v(_vm._s(post.id))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(post.title))]),
@@ -4317,11 +4329,7 @@ var render = function() {
                           to: { name: "posts.edit", params: { id: post.id } }
                         }
                       },
-                      [
-                        _vm._v(
-                          "\n                            Edit\n                        "
-                        )
-                      ]
+                      [_vm._v("Edit")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -4335,11 +4343,7 @@ var render = function() {
                           }
                         }
                       },
-                      [
-                        _vm._v(
-                          "\n                            Delete\n                        "
-                        )
-                      ]
+                      [_vm._v("Delete")]
                     )
                   ],
                   1
@@ -4590,7 +4594,10 @@ var render = function() {
                     _vm._l(_vm.categories, function(category) {
                       return _c(
                         "option",
-                        { domProps: { value: category.id } },
+                        {
+                          key: (category, _vm.index).id,
+                          domProps: { value: category.id }
+                        },
                         [
                           _vm._v(
                             "\n                                " +
@@ -4672,16 +4679,16 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Post Content")]),
+                    _c("label", [_vm._v("Post Body")]),
                     _vm._v(" "),
                     _c("ckeditor", {
                       attrs: { editor: _vm.editor, config: _vm.editorConfig },
                       model: {
-                        value: _vm.post.content,
+                        value: _vm.post.body,
                         callback: function($$v) {
-                          _vm.$set(_vm.post, "content", $$v)
+                          _vm.$set(_vm.post, "body", $$v)
                         },
-                        expression: "post.content"
+                        expression: "post.body"
                       }
                     })
                   ],
@@ -4893,14 +4900,11 @@ var render = function() {
                     _vm._l(_vm.categories, function(category) {
                       return _c(
                         "option",
-                        { domProps: { value: category.id } },
-                        [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(category.name) +
-                              "\n                            "
-                          )
-                        ]
+                        {
+                          key: (category, _vm.index).id,
+                          domProps: { value: category.id }
+                        },
+                        [_vm._v(_vm._s(category.name))]
                       )
                     }),
                     0
@@ -4964,7 +4968,7 @@ var render = function() {
             _c(
               "tbody",
               _vm._l(_vm.posts, function(post, index) {
-                return _c("tr", [
+                return _c("tr", { key: (post, index).id }, [
                   _c("td", [_vm._v(_vm._s(post.id))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(post.title))]),
@@ -5218,7 +5222,7 @@ var render = function() {
             _c(
               "tbody",
               _vm._l(_vm.users, function(user, index) {
-                return _c("tr", [
+                return _c("tr", { key: (user, index).id }, [
                   _c("td", [_vm._v(_vm._s(user.name))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(user.email))]),
@@ -20051,23 +20055,23 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
 /* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ckeditor/ckeditor5-vue */ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js");
-/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _components_categories_CategoryIndex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/categories/CategoryIndex */ "./resources/js/components/categories/CategoryIndex.vue");
-/* harmony import */ var _components_categories_CategoryCreate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/categories/CategoryCreate */ "./resources/js/components/categories/CategoryCreate.vue");
-/* harmony import */ var _components_categories_CategoryEdit__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/categories/CategoryEdit */ "./resources/js/components/categories/CategoryEdit.vue");
-/* harmony import */ var _components_posts_PostIndex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/posts/PostIndex */ "./resources/js/components/posts/PostIndex.vue");
-/* harmony import */ var _components_posts_PostCreate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/posts/PostCreate */ "./resources/js/components/posts/PostCreate.vue");
-/* harmony import */ var _components_posts_PostEdit__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/posts/PostEdit */ "./resources/js/components/posts/PostEdit.vue");
-/* harmony import */ var _components_posts_Draft__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/posts/Draft */ "./resources/js/components/posts/Draft.vue");
-/* harmony import */ var _components_users_UserIndex__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/users/UserIndex */ "./resources/js/components/users/UserIndex.vue");
-/* harmony import */ var _components_users_UserCreate__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/users/UserCreate */ "./resources/js/components/users/UserCreate.vue");
-/* harmony import */ var _components_users_UserEdit__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/users/UserEdit */ "./resources/js/components/users/UserEdit.vue");
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-vue */ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_categories_CategoryIndex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/categories/CategoryIndex */ "./resources/js/components/categories/CategoryIndex.vue");
+/* harmony import */ var _components_categories_CategoryCreate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/categories/CategoryCreate */ "./resources/js/components/categories/CategoryCreate.vue");
+/* harmony import */ var _components_categories_CategoryEdit__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/categories/CategoryEdit */ "./resources/js/components/categories/CategoryEdit.vue");
+/* harmony import */ var _components_posts_PostIndex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/posts/PostIndex */ "./resources/js/components/posts/PostIndex.vue");
+/* harmony import */ var _components_posts_PostCreate__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/posts/PostCreate */ "./resources/js/components/posts/PostCreate.vue");
+/* harmony import */ var _components_posts_PostEdit__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/posts/PostEdit */ "./resources/js/components/posts/PostEdit.vue");
+/* harmony import */ var _components_posts_Draft__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/posts/Draft */ "./resources/js/components/posts/Draft.vue");
+/* harmony import */ var _components_users_UserIndex__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/users/UserIndex */ "./resources/js/components/users/UserIndex.vue");
+/* harmony import */ var _components_users_UserCreate__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/users/UserCreate */ "./resources/js/components/users/UserCreate.vue");
+/* harmony import */ var _components_users_UserEdit__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/users/UserEdit */ "./resources/js/components/users/UserEdit.vue");
 
 
 
@@ -20083,52 +20087,52 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_14__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_2___default.a, axios__WEBPACK_IMPORTED_MODULE_3___default.a);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_15___default.a);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_14__["default"]({
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_4___default.a);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   base: '/admin',
   mode: 'history',
   routes: [{
     path: '/categories',
     name: 'categories.list',
-    component: _components_categories_CategoryIndex__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _components_categories_CategoryIndex__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/categories/create',
     name: 'categories.create',
-    component: _components_categories_CategoryCreate__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _components_categories_CategoryCreate__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: '/categories/edit/:id',
     name: 'categories.edit',
-    component: _components_categories_CategoryEdit__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _components_categories_CategoryEdit__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
     path: '/posts',
     name: 'posts.list',
-    component: _components_posts_PostIndex__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _components_posts_PostIndex__WEBPACK_IMPORTED_MODULE_8__["default"]
   }, {
     path: '/posts/create',
     name: 'posts.create',
-    component: _components_posts_PostCreate__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _components_posts_PostCreate__WEBPACK_IMPORTED_MODULE_9__["default"]
   }, {
     path: '/posts/edit/:id',
     name: 'posts.edit',
-    component: _components_posts_PostEdit__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _components_posts_PostEdit__WEBPACK_IMPORTED_MODULE_10__["default"]
   }, {
     path: '/posts/draft',
     name: 'posts.draft',
-    component: _components_posts_Draft__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _components_posts_Draft__WEBPACK_IMPORTED_MODULE_11__["default"]
   }, {
     path: '/users',
     name: 'users.list',
-    component: _components_users_UserIndex__WEBPACK_IMPORTED_MODULE_11__["default"]
+    component: _components_users_UserIndex__WEBPACK_IMPORTED_MODULE_12__["default"]
   }, {
     path: '/users/create',
     name: 'users.create',
-    component: _components_users_UserCreate__WEBPACK_IMPORTED_MODULE_12__["default"]
+    component: _components_users_UserCreate__WEBPACK_IMPORTED_MODULE_13__["default"]
   }, {
     path: '/users/edit/:id',
     name: 'users.edit',
-    component: _components_users_UserEdit__WEBPACK_IMPORTED_MODULE_13__["default"]
+    component: _components_users_UserEdit__WEBPACK_IMPORTED_MODULE_14__["default"]
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({

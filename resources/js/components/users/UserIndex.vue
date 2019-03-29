@@ -15,7 +15,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(user, index) in users">
+                    <tr v-for="(user, index) in users" :key="(user, index).id">
                         <td>{{user.name }}</td>
                         <td>{{user.email }}</td>
                         <td></td>

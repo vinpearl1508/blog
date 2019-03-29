@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label>Post Category</label>
                             <select class="form-control" v-model="post.category_id" id="category">
-                                <option v-for="category in categories" :value="category.id">
+                                <option v-for="category in categories" :value="category.id" :key="(category, index).id">
                                     {{ category.name }}
                                 </option>
                             </select>

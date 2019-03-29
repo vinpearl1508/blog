@@ -17,13 +17,19 @@ class PostController extends Controller
 
     public function __construct(Post $post)
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
         $this->post = $post;
     }
 
     public function index()
     {
-        return Post::all();
+        // return Post::all();
+        $posts = Post::all();
+        foreach ($posts as $post) {
+            if ($c = preg_match_all("/(public\/images\/)/is", $post->thumbnail, $matches))
+                $post->thumbnail = Storage::url($post->thumbnail);
+        }
+        return $posts;
     }
 
     /**
@@ -56,7 +62,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return Post::findOrFail($id);
+        // return Post::findOrFail($id);.$post = $this->post->findOrFail($id);
+        $post = Post::findOrFail($id);
+        if ($c = preg_match_all("/(public\/images\/)/is", $post['thumbnail'], $matches))
+            $post['thumbnail'] = Storage::url($post['thumbnail']);
+        return $post;
     }
 
     /**
@@ -96,4 +106,14 @@ class PostController extends Controller
         $post->delete();
         return '';
     }
+
+    // public function draft()
+    // {
+    //     $posts = Post::findWhere(['published' => false]);
+    //     foreach ($posts as $post) {
+    //         if ($c = preg_match_all("/(public\/images\/)/is", $post->thumbnail, $matches))
+    //             $post->thumbnail = Storage::url($post->thumbnail);
+    //     }
+    //     return $posts;
+    // }
 }

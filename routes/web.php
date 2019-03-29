@@ -28,6 +28,7 @@ Route::prefix('api')->group(function () {
         'posts' => 'Api\PostController',
         'users' => 'Api\UserController',
     ]);
+    Route::get('/draft', 'Api\PostController@draft');
 });
 Route::get('/admin/{vue?}', function () {
     return view('dashboard');

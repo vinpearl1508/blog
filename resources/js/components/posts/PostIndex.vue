@@ -16,7 +16,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(post, index) in posts">
+                    <tr v-for="(post, index) in posts" :key="(post, index).id">
                         <td>{{ post.id }}</td>
                         <td>{{ post.title }}</td>
                         <td>{{ post.slug }}</td>
