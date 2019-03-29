@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
-use Auth;
-use Gate;
 
-class PostController extends Controller
+class IndexController extends Controller
 {
     public function index()
     {
@@ -19,5 +16,10 @@ class PostController extends Controller
     {
         $post = Post::published()->find($id);
         return view('singlePost', compact('post'));
+    }
+
+    public function search(Type $var = null)
+    {
+        # code...
     }
 }

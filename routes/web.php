@@ -17,10 +17,22 @@
 
 Auth::routes();
 
+Route::get('/', 'IndexController@index');
+Route::get('/singlePost/{id}', 'IndexController@show')->name('singlePost');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'PostController@index');
-Route::get('/singlePost/{id}', 'PostController@show')->name('singlePost');
+Route::prefix('api')->group(function () {
+    Route::apiResources([
+        'categories' => 'Api\CategoryController',
+        'posts' => 'Api\PostController',
+        'users' => 'Api\UserController',
+    ]);
+});
+Route::get('/admin/{vue?}', function () {
+    return view('dashboard');
+})->where('vue', '[\/\w\.-]*')->middleware('auth');
+
 Route::group(['prefix' => 'posts'], function () {
     Route::get('/drafts', 'HomeController@drafts')
         ->name('list_drafts')
@@ -42,13 +54,5 @@ Route::group(['prefix' => 'posts'], function () {
     Route::get('/publish/{post}', 'HomeController@publish')
         ->name('publish_post')
         ->middleware('can:post.publish');
-});
-
-Route::prefix('api')->group(function () {
-    Route::apiResources([
-        'categories' => 'Api\CategoryController',
-        'posts' => 'Api\PostController',
-        'users' => 'Api\UserController',
-    ]);
 });
 
