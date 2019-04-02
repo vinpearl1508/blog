@@ -28,54 +28,56 @@ const router = new VueRouter({
         {
             path: '/categories',
             name: 'categories.list',
-            component: CategoryIndex
+            component: CategoryIndex,
         },
         {
             path: '/categories/create',
             name: 'categories.create',
-            component: CategoryCreate
+            component: CategoryCreate,
         },
         {
             path: '/categories/edit/:id',
             name: 'categories.edit',
-            component: CategoryEdit
+            component: CategoryEdit,
         },
         {
             path: '/posts',
             name: 'posts.list',
-            component: PostIndex
+            component: PostIndex,
         },
         {
             path: '/posts/create',
             name: 'posts.create',
-            component: PostCreate
+            component: PostCreate,
+            meta: {
+                middleware: 'can:post.create'
+            }
         },
         {
             path: '/posts/edit/:id',
             name: 'posts.edit',
-            component: PostEdit
+            component: PostEdit,
         },
         {
             path: '/posts/draft',
             name: 'posts.draft',
-            component: Draft
+            component: Draft,
         },
         {
             path: '/users',
             name: 'users.list',
-            component: UserIndex
+            component: UserIndex,
         },
         {
             path: '/users/create',
             name: 'users.create',
-            component: UserCreate
+            component: UserCreate,
         },
         {
             path: '/users/edit/:id',
             name: 'users.edit',
-            component: UserEdit
+            component: UserEdit,
         },
-
     ],
 });
 

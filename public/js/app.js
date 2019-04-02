@@ -2112,6 +2112,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2175,6 +2177,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2188,22 +2194,22 @@ __webpack_require__.r(__webpack_exports__);
       //     slug: ''
       // },
       categories: {
-        id: '',
-        name: '',
-        slug: ''
+        id: "",
+        name: "",
+        slug: ""
       },
       post: {
-        title: '',
-        slug: '',
-        thumbnail: '',
-        description: '',
-        category_id: '',
-        content: '<p>Content of the editor.</p>'
+        title: "",
+        slug: "",
+        thumbnail: "",
+        description: "",
+        category_id: "",
+        content: "<p>Content of the editor.</p>"
       }
     };
   },
   mounted: function mounted() {
-    var app = this; // axios.get('/api/tags')
+    // axios.get('/api/tags')
     //     .then(function (resp) {
     //         app.tags = resp.data;
     //     })
@@ -2211,12 +2217,12 @@ __webpack_require__.r(__webpack_exports__);
     //         console.log(resp);
     //         alert("Could not load tags");
     //     });
-
-    this.axios.get('/api/categories').then(function (resp) {
+    var app = this;
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/categories").then(function (resp) {
       app.categories = resp.data;
     }).catch(function (resp) {
       console.log(resp);
-      alert("Could not load categories");
+      alert("Could not load category");
     });
   },
   methods: {
@@ -2238,7 +2244,7 @@ __webpack_require__.r(__webpack_exports__);
     handleFileChange: function handleFileChange(event) {
       //you can access the file in using event.target.files[0]
       // this.post.thumbnail = event.target.files[0];
-      this.post.thumbnail = document.getElementById('thumbnail').files[0];
+      this.post.thumbnail = document.getElementById("thumbnail").files[0];
       console.log(this.post.thumbnail);
     },
     saveForm: function saveForm() {
@@ -2247,17 +2253,17 @@ __webpack_require__.r(__webpack_exports__);
       var thumbnail = document.getElementById("thumbnail").files[0];
 
       if (typeof thumbnail != "undefined") {
-        data.append('thumbnail', thumbnail, thumbnail.name);
+        data.append("thumbnail", thumbnail, thumbnail.name);
       }
 
-      data.append('title', this.post.title);
-      data.append('slug', this.post.slug);
-      data.append('description', this.post.description);
-      data.append('content', this.post.content);
-      data.append('category_id', this.post.category_id);
-      this.axios.post('/api/posts', data, {
+      data.append("title", this.post.title);
+      data.append("slug", this.post.slug);
+      data.append("description", this.post.description);
+      data.append("content", this.post.content);
+      data.append("category_id", this.post.category_id);
+      this.axios.post("/api/posts", data, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          "Content-Type": "multipart/form-data"
         }
       }).then(function (resp) {
         // console.log(resp)
@@ -2283,6 +2289,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2354,10 +2362,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -2438,7 +2443,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("body", this.post.body);
       formData.append("category_id", this.post.category_id);
       formData.append("published", this.post.published);
-      this.axios.post('/api/posts/${app.post.id}', formData, {
+      this.axios.post("/api/posts/${app.post.id}", formData, {
         headers: {
           "content-type": "multipart/form-data"
         }
@@ -4300,7 +4305,7 @@ var render = function() {
           _c(
             "tbody",
             _vm._l(_vm.posts, function(post, index) {
-              return _c("tr", { key: (post, index).id }, [
+              return _c("tr", [
                 _c("td", [_vm._v(_vm._s(post.id))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(post.title))]),
@@ -4594,17 +4599,8 @@ var render = function() {
                     _vm._l(_vm.categories, function(category) {
                       return _c(
                         "option",
-                        {
-                          key: (category, _vm.index).id,
-                          domProps: { value: category.id }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(category.name) +
-                              "\n                            "
-                          )
-                        ]
+                        { domProps: { value: category.id } },
+                        [_vm._v(_vm._s(category.name))]
                       )
                     }),
                     0
@@ -4900,10 +4896,7 @@ var render = function() {
                     _vm._l(_vm.categories, function(category) {
                       return _c(
                         "option",
-                        {
-                          key: (category, _vm.index).id,
-                          domProps: { value: category.id }
-                        },
+                        { domProps: { value: category.id } },
                         [_vm._v(_vm._s(category.name))]
                       )
                     }),
@@ -20112,7 +20105,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/posts/create',
     name: 'posts.create',
-    component: _components_posts_PostCreate__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _components_posts_PostCreate__WEBPACK_IMPORTED_MODULE_9__["default"],
+    meta: {
+      middleware: 'can:post.create'
+    }
   }, {
     path: '/posts/edit/:id',
     name: 'posts.edit',

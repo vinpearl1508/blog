@@ -25,12 +25,12 @@
                 </router-link>
             </li>
             <li>
-                <router-link :to="{name: 'roles.list'}" class="fa fa-rocket">
+                <router-link :to="{}" class="fa fa-rocket">
                     <span> Role</span>
                 </router-link>
             </li>
             <li>
-                <router-link :to="{name: 'permissions.list'}" class="fa fa-server">
+                <router-link :to="{}" class="fa fa-server">
                     <span> Permission</span>
                 </router-link>
             </li>

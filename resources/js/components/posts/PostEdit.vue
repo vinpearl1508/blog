@@ -58,11 +58,7 @@
             <div class="form-group">
               <label>Post Category</label>
               <select class="form-control" v-model="post.category_id" id="category">
-                <option
-                  v-for="category in categories"
-                  :value="category.id"
-                  :key="(category, index).id"
-                >{{ category.name }}</option>
+                <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
               </select>
             </div>
           </div>
@@ -75,7 +71,7 @@
 
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
+import axios from "axios";
 export default {
   mounted() {
     let app = this;
@@ -161,7 +157,7 @@ export default {
       formData.append("published", this.post.published);
 
       this.axios
-        .post('/api/posts/${app.post.id}', formData, {
+        .post("/api/posts/${app.post.id}", formData, {
           headers: { "content-type": "multipart/form-data" }
         })
         .then(function(resp) {
