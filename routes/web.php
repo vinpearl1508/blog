@@ -18,6 +18,7 @@
 Auth::routes();
 
 Route::get('/', 'IndexController@index');
+Route::get('search',['as'=>'search', 'uses'=>'IndexController@search']);
 Route::get('/postList/{id}', 'IndexController@posts')->name('postList');
 Route::get('/singlePost/{id}', 'IndexController@show')->name('singlePost');
 

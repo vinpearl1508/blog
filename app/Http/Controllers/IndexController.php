@@ -24,4 +24,12 @@ class IndexController extends Controller
         $category = Category::with('posts')->findOrFail($id);
         return view('postList', compact('category'));
     }
+
+    public function search()
+    {
+        $search = \Request::get('search');
+        $posts = Post::where('title', 'like', '%' . $search . '%')
+                        ->orderBy('title')->paginate(3);
+        return view('search', compact('posts'));
+    }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="blog-post-area">
-    <h2 class="title text-center">Latest From our Blog</h2>
+    <h2 class="title text-center">{{$category->name}}</h2>
     @if($category->posts->count())
     @foreach($category->posts as $post)
     <div class="single-blog-post">

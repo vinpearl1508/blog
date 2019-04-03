@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('post.publish', PostPolicy::class . '@publish');
         Gate::define('post.draft', PostPolicy::class . '@draft');
 
-        View::composer('layouts/elements/sidebar', function ($view) {
+        View::composer('layouts.elements.sidebar', function ($view) {
             $view->with('categories',Category::all());
         });
     }

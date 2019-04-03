@@ -92,7 +92,11 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" class="form-control" id="search" name="search">
+                        <form role="search" method="get" id="searchform" action="{{ route('search') }}">
+                            <input type="text" value="" name="search" id="s" placeholder="Search..." class="form-control">
+                            <!-- <button class="fa fa-search" type="submit" id="searchsubmit"></button> -->
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -100,4 +104,4 @@
     </div>
     <!--/header-bottom-->
 </header>
-<!--/header-->
+<!--/header--> 
