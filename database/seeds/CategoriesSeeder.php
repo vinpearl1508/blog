@@ -24,5 +24,13 @@ class CategoriesSeeder extends Seeder
             'name' => 'Thể thao', 
             'slug' => 'sport',
         ]);
+        $traveling = Category::create([
+            'name' => 'Du lịch', 
+            'slug' => 'traveling',
+        ]);
+        $gym = Category::create([
+            'name' => 'Thể hình', 
+            'slug' => 'gym',
+        ]);
     }
 }

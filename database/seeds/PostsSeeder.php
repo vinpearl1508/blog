@@ -20,6 +20,8 @@ class PostsSeeder extends Seeder
         $technology = Category::where('slug', 'technology')->first();
         $car = Category::where('slug', 'car')->first();
         $sport = Category::where('slug', 'sport')->first();
+        $traveling = Category::where('slug', 'traveling')->first();
+        $gym = Category::where('slug', 'gym')->first();
 
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 10; $i++) {
@@ -58,6 +60,30 @@ class PostsSeeder extends Seeder
                 'user_id' => rand($author1->id,$author2->id),
             ]);
             $post->categories()->attach($sport);
+
+            $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
+            $post = Post::create([
+                'title' => $title,
+                'body' => $faker->text($maxNbChars = 1000),
+                'slug' => str_slug($title),
+                'description' => $faker->text($maxNbChars = 200),
+                'thumbnail' => $faker->imageUrl(690,300),
+                'published' => rand(0, 1),
+                'user_id' => rand($author1->id,$author2->id),
+            ]);
+            $post->categories()->attach($traveling);
+
+            $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
+            $post = Post::create([
+                'title' => $title,
+                'body' => $faker->text($maxNbChars = 1000),
+                'slug' => str_slug($title),
+                'description' => $faker->text($maxNbChars = 200),
+                'thumbnail' => $faker->imageUrl(690,300),
+                'published' => rand(0, 1),
+                'user_id' => rand($author1->id,$author2->id),
+            ]);
+            $post->categories()->attach($gym);
         }
     }
 }
