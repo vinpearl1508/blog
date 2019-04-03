@@ -30,7 +30,7 @@
 
     <div class="header-middle">
         <!--header-middle-->
-        <div class="container">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="shop-menu pull-right">
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <!--/header-middle-->
 
@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search" />
+                        <input type="text" class="form-control" id="search" name="search">
                     </div>
                 </div>
             </div>
@@ -100,4 +100,4 @@
     </div>
     <!--/header-bottom-->
 </header>
-<!--/header--> 
+<!--/header-->

@@ -18,6 +18,7 @@
 Auth::routes();
 
 Route::get('/', 'IndexController@index');
+Route::get('/postList/{id}', 'IndexController@posts')->name('postList');
 Route::get('/singlePost/{id}', 'IndexController@show')->name('singlePost');
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -34,6 +35,7 @@ Route::get('/admin/{vue?}', function () {
     return view('dashboard');
 })->where('vue', '[\/\w\.-]*')->middleware('auth');
 
+// Route::get('/posts', 'HomeController@index')->name('list_posts');
 // Route::group(['prefix' => 'posts'], function () {
 //     Route::get('/drafts', 'HomeController@drafts')
 //         ->name('list_drafts')

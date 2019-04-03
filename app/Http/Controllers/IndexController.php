@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Category;
 
 class IndexController extends Controller
 {
@@ -18,8 +19,9 @@ class IndexController extends Controller
         return view('singlePost', compact('post'));
     }
 
-    public function search(Type $var = null)
+    public function posts($id)
     {
-        # code...
+        $category = Category::with('posts')->findOrFail($id);
+        return view('postList', compact('category'));
     }
 }

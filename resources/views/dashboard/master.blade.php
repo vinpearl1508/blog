@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard - @yield('title')</title>
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <!-- <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"> -->
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="{{ asset('dashboard/bootstrap/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
@@ -27,53 +28,56 @@
     <!-- Custom CSS -->
     {{--<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">--}}
 
-@yield('stylesheet')
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>
+    @yield('stylesheet')
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+                                'csrfToken' => csrf_token(),
+                            ]); ?>
     </script>
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper" id="app">
+    <div class="wrapper" id="app">
 
-    @include('dashboard.header')
+        @include('dashboard.header')
 
-    @include('dashboard.sidebar')
+        @include('dashboard.sidebar')
 
-    @include('dashboard.content')
-</div>
-<!-- /.content-wrapper -->
-@include('dashboard.footer')
-</div>
-<!-- ./wrapper -->
+        @include('dashboard.content')
+    </div>
+    <!-- /.content-wrapper -->
+    @include('dashboard.footer')
+    </div>
+    <!-- ./wrapper -->
 
-<script src="{{ mix('js/app.js') }}"></script>
-<!-- jQuery 2.2.3 -->
-<script src="{{ asset('dashboard/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{ asset('dashboard/bootstrap/js/bootstrap.min.js') }}"></script>
-<!-- PACE -->
-<script src="{{ asset('dashboard/plugins/pace/pace.min.js') }}"></script>
-<!-- SlimScroll -->
-<script src="{{ asset('dashboard/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-<!-- FastClick -->
-<script src="{{ asset('dashboard/plugins/fastclick/fastclick.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('dashboard/dist/js/app.min.js') }}"></script>
-<!-- page script -->
-<script type="text/javascript">
-    // To make Pace works on Ajax calls
-    $(document).ajaxStart(function () {
-        Pace.restart();
-    });
-</script>
-@yield('script')
+    <script src="{{ mix('js/app.js') }}"></script>
+    <!-- jQuery 2.2.3 -->
+    <script src="{{ asset('dashboard/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{{ asset('dashboard/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- PACE -->
+    <script src="{{ asset('dashboard/plugins/pace/pace.min.js') }}"></script>
+    <!-- SlimScroll -->
+    <script src="{{ asset('dashboard/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+    <!-- FastClick -->
+    <script src="{{ asset('dashboard/plugins/fastclick/fastclick.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('dashboard/dist/js/app.min.js') }}"></script>
+    <!-- page script -->
+    <script type="text/javascript">
+        // To make Pace works on Ajax calls
+        $(document).ajaxStart(function() {
+            Pace.restart();
+        });
+    </script>
+    @yield('script')
 </body>
-</html>
+
+</html> 

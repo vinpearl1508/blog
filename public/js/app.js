@@ -2514,6 +2514,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2523,7 +2526,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var app = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/posts').then(function (resp) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/posts").then(function (resp) {
       app.posts = resp.data;
     }).catch(function (resp) {
       console.log(resp);
@@ -2534,7 +2537,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteEntry: function deleteEntry(id, index) {
       if (confirm("Do you really want to delete it?")) {
         var app = this;
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete('/api/posts/' + id).then(function (resp) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete("/api/posts/" + id).then(function (resp) {
           app.posts.splice(index, 1);
         }).catch(function (resp) {
           alert("Could not delete post");
@@ -2744,7 +2747,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.img-responsive {\n    width: 100px;\n}\n", ""]);
+exports.push([module.i, "\n.img-responsive {\n  width: 100px;\n}\n", ""]);
 
 // exports
 
@@ -4990,11 +4993,7 @@ var render = function() {
                             to: { name: "posts.edit", params: { id: post.id } }
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                            Edit\n                        "
-                          )
-                        ]
+                        [_vm._v("Edit")]
                       ),
                       _vm._v(" "),
                       _c(
@@ -5008,11 +5007,7 @@ var render = function() {
                             }
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                            Delete\n                        "
-                          )
-                        ]
+                        [_vm._v("Delete")]
                       )
                     ],
                     1
@@ -5045,7 +5040,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Image")]),
         _vm._v(" "),
-        _c("th", [_vm._v("published")]),
+        _c("th", [_vm._v("Published")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "100" } }, [_vm._v(" ")])
       ])
@@ -20142,14 +20137,15 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*!***************************************************************!*\
   !*** ./resources/js/components/categories/CategoryCreate.vue ***!
   \***************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CategoryCreate_vue_vue_type_template_id_bd635c5c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CategoryCreate.vue?vue&type=template&id=bd635c5c& */ "./resources/js/components/categories/CategoryCreate.vue?vue&type=template&id=bd635c5c&");
 /* harmony import */ var _CategoryCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CategoryCreate.vue?vue&type=script&lang=js& */ "./resources/js/components/categories/CategoryCreate.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CategoryCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CategoryCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -20179,7 +20175,7 @@ component.options.__file = "resources/js/components/categories/CategoryCreate.vu
 /*!****************************************************************************************!*\
   !*** ./resources/js/components/categories/CategoryCreate.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

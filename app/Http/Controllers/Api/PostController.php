@@ -107,13 +107,13 @@ class PostController extends Controller
         return '';
     }
 
-    // public function draft()
-    // {
-    //     $posts = Post::findWhere(['published' => false]);
-    //     foreach ($posts as $post) {
-    //         if ($c = preg_match_all("/(public\/images\/)/is", $post->thumbnail, $matches))
-    //             $post->thumbnail = Storage::url($post->thumbnail);
-    //     }
-    //     return $posts;
-    // }
+    public function draft()
+    {
+        $posts = Post::unpublished()->get();
+        foreach ($posts as $post) {
+            if ($c = preg_match_all("/(public\/images\/)/is", $post->thumbnail, $matches))
+                $post->thumbnail = Storage::url($post->thumbnail);
+        }
+        return $posts;
+    }
 }
