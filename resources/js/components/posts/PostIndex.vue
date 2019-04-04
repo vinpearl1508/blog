@@ -11,7 +11,6 @@
               <th>Slug</th>
               <th>Description</th>
               <th>Image</th>
-              <th>Published</th>
               <th width="100">&nbsp;</th>
             </tr>
           </thead>
@@ -24,7 +23,6 @@
               <td>
                 <img v-bind:src="post.thumbnail" alt class="img-responsive">
               </td>
-              <td>{{ post.published }}</td>
               <td>
                 <router-link
                   :to="{name: 'posts.edit', params: {id: post.id}}"

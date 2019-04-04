@@ -16,6 +16,7 @@ class IndexController extends Controller
     public function show($id)
     {
         $post = Post::published()->find($id);
+        if (empty($post)) return abort(404);;
         return view('singlePost', compact('post'));
     }
 
@@ -29,7 +30,7 @@ class IndexController extends Controller
     {
         $search = \Request::get('key');
         $posts = Post::published()->where('title', 'like', '%' . $search . '%')
-                        ->orderBy('title')->get();
+            ->orderBy('title')->get();
         return view('search', compact('posts'));
     }
 }

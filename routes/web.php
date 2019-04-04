@@ -31,6 +31,7 @@ Route::prefix('api')->group(function () {
         'users' => 'Api\UserController',
     ]);
     Route::get('/draft', 'Api\PostController@draft');
+    Route::get('/publish/{id}', 'Api\PostController@publish');
 });
 Route::get('/admin/{vue?}', function () {
     return view('dashboard');

@@ -29,10 +29,7 @@
                   :to="{name: 'posts.edit', params: {id: post.id}}"
                   class="btn btn-xs btn-default"
                 >Edit</router-link>
-                <router-link
-                  :to="{name: 'posts.publish', params: {id: post.id}}"
-                  class="btn btn-xs btn-success"
-                >Publish</router-link>
+                <a class="btn btn-xs btn-success" v-on:click="publishEntry(post.id, index)">Publish</a>
               </td>
             </tr>
           </tbody>
@@ -63,19 +60,20 @@ export default {
       });
   },
   methods: {
-    // deleteEntry(id, index) {
-    //   if (confirm("Do you really want to delete it?")) {
-    //     var app = this;
-    //     axios
-    //       .delete("/api/posts/" + id)
-    //       .then(function(resp) {
-    //         app.posts.splice(index, 1);
-    //       })
-    //       .catch(function(resp) {
-    //         alert("Could not delete post");
-    //       });
-    //   }
-    // }
+    publishEntry(id, index) {
+      if (confirm("Do you really want to publish it?")) {
+        var app = this;
+        axios
+          .get("/api/publish/" + id)
+          .then(function(resp) {
+            app.posts.splice(index, 1);
+          })
+          .catch(function(resp) {
+            console.log(resp);
+            alert("Could not publish post");
+          });
+      }
+    }
   }
 };
 </script>

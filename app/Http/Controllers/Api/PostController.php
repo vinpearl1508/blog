@@ -24,7 +24,7 @@ class PostController extends Controller
     public function index()
     {
         // return Post::all();
-        $posts = Post::all();
+        $posts = Post::published()->get();
         foreach ($posts as $post) {
             if ($c = preg_match_all("/(public\/images\/)/is", $post->thumbnail, $matches))
                 $post->thumbnail = Storage::url($post->thumbnail);
@@ -107,8 +107,9 @@ class PostController extends Controller
         return '';
     }
 
-    public function publish(Post $post)
+    public function publish($id)
     {
+        $post = Post::findOrFail($id);
         $post->published = true;
         $post->save();
         return '';

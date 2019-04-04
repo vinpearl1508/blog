@@ -8,7 +8,7 @@
         <h3>{{ $post->title }}</h3>
         <div class="post-meta">
             <ul>
-                <li><i class="fa fa-user"></i> Mac Doe</li>
+                <li><i class="fa fa-user"></i> {{ $post->owner->name }}</li>
                 <li><i class="fa fa-clock-o"></i> {{ $post->created_at->format('H:i:s') }}</li>
                 <li><i class="fa fa-calendar"></i> {{ $post->created_at->format('d.m.Y') }}</li>
             </ul>
@@ -27,7 +27,7 @@
         <a class="btn btn-primary" href="{{ route('singlePost', $post->id) }}">Read More</a>
     </div>
     @endforeach
-    @endif 
+    @endif
 </div>
 
 @endsection 

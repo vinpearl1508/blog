@@ -2061,9 +2061,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2080,19 +2077,18 @@ __webpack_require__.r(__webpack_exports__);
       alert("Could not load posts");
     });
   },
-  methods: {// deleteEntry(id, index) {
-    //   if (confirm("Do you really want to delete it?")) {
-    //     var app = this;
-    //     axios
-    //       .delete("/api/posts/" + id)
-    //       .then(function(resp) {
-    //         app.posts.splice(index, 1);
-    //       })
-    //       .catch(function(resp) {
-    //         alert("Could not delete post");
-    //       });
-    //   }
-    // }
+  methods: {
+    publishEntry: function publishEntry(id, index) {
+      if (confirm("Do you really want to publish it?")) {
+        var app = this;
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/publish/" + id).then(function (resp) {
+          app.posts.splice(index, 1);
+        }).catch(function (resp) {
+          console.log(resp);
+          alert("Could not publish post");
+        });
+      }
+    }
   }
 });
 
@@ -2468,8 +2464,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
 //
 //
 //
@@ -4335,11 +4329,13 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c(
-                      "router-link",
+                      "a",
                       {
                         staticClass: "btn btn-xs btn-success",
-                        attrs: {
-                          to: { name: "posts.publish", params: { id: post.id } }
+                        on: {
+                          click: function($event) {
+                            return _vm.publishEntry(post.id, index)
+                          }
                         }
                       },
                       [_vm._v("Publish")]
@@ -4969,8 +4965,6 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(post.published))]),
-                  _vm._v(" "),
                   _c(
                     "td",
                     [
@@ -5028,8 +5022,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Description")]),
         _vm._v(" "),
         _c("th", [_vm._v("Image")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Published")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "100" } }, [_vm._v(" ")])
       ])
