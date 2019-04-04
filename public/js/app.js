@@ -1901,7 +1901,7 @@ __webpack_require__.r(__webpack_exports__);
     var app = this;
     var id = app.$route.params.id;
     app.categoryId = id;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/categories/' + id).then(function (resp) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/categories/" + id).then(function (resp) {
       app.category = resp.data;
     }).catch(function () {
       alert("Could not load your category");
@@ -1911,8 +1911,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       categoryId: null,
       category: {
-        name: '',
-        slug: ''
+        name: "",
+        slug: ""
       }
     };
   },
@@ -1921,11 +1921,11 @@ __webpack_require__.r(__webpack_exports__);
       event.preventDefault();
       var app = this;
       var newCategory = app.category;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch('/api/categories/' + app.categoryId, newCategory).then(function (resp) {
-        app.$router.replace('/categories');
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch("/api/categories/" + app.categoryId, newCategory).then(function (resp) {
+        app.$router.replace("/categories");
       }).catch(function (resp) {
         console.log(resp);
-        alert("Could not create your category");
+        alert("Could not edit your category");
       });
     }
   }
@@ -1944,10 +1944,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
 //
 //
 //
@@ -2068,7 +2064,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2085,17 +2080,19 @@ __webpack_require__.r(__webpack_exports__);
       alert("Could not load posts");
     });
   },
-  methods: {
-    deleteEntry: function deleteEntry(id, index) {
-      if (confirm("Do you really want to delete it?")) {
-        var app = this;
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete("/api/posts/" + id).then(function (resp) {
-          app.posts.splice(index, 1);
-        }).catch(function (resp) {
-          alert("Could not delete post");
-        });
-      }
-    }
+  methods: {// deleteEntry(id, index) {
+    //   if (confirm("Do you really want to delete it?")) {
+    //     var app = this;
+    //     axios
+    //       .delete("/api/posts/" + id)
+    //       .then(function(resp) {
+    //         app.posts.splice(index, 1);
+    //       })
+    //       .catch(function(resp) {
+    //         alert("Could not delete post");
+    //       });
+    //   }
+    // }
   }
 });
 
@@ -4239,7 +4236,6 @@ var render = function() {
                         "a",
                         {
                           staticClass: "btn btn-xs btn-danger",
-                          attrs: { href: "#" },
                           on: {
                             click: function($event) {
                               return _vm.deleteEntry(category.id, index)
@@ -4324,8 +4320,6 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(post.published))]),
-                _vm._v(" "),
                 _c(
                   "td",
                   [
@@ -4341,17 +4335,14 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c(
-                      "a",
+                      "router-link",
                       {
-                        staticClass: "btn btn-xs btn-danger",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteEntry(post.id, index)
-                          }
+                        staticClass: "btn btn-xs btn-success",
+                        attrs: {
+                          to: { name: "posts.publish", params: { id: post.id } }
                         }
                       },
-                      [_vm._v("Delete")]
+                      [_vm._v("Publish")]
                     )
                   ],
                   1
@@ -4381,8 +4372,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Description")]),
         _vm._v(" "),
         _c("th", [_vm._v("Image")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("published")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "100" } }, [_vm._v(" ")])
       ])

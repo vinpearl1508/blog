@@ -20,11 +20,7 @@
                   :to="{name: 'categories.edit', params: {id: category.id}}"
                   class="btn btn-xs btn-default"
                 >Edit</router-link>
-                <a
-                  href="#"
-                  class="btn btn-xs btn-danger"
-                  v-on:click="deleteEntry(category.id, index)"
-                >Delete</a>
+                <a class="btn btn-xs btn-danger" v-on:click="deleteEntry(category.id, index)">Delete</a>
               </td>
             </tr>
           </tbody>

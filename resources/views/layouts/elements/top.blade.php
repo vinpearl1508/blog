@@ -93,10 +93,8 @@
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
                         <form role="search" method="get" id="searchform" action="{{ route('search') }}">
-                            <input type="text" value="" name="search" id="s" placeholder="Search..." class="form-control">
-                            <!-- <button class="fa fa-search" type="submit" id="searchsubmit"></button> -->
+                            <input type="text" value="" name="key" id="s" placeholder="Search..." class="form-control">
                         </form>
-
                     </div>
                 </div>
             </div>

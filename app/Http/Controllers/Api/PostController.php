@@ -107,6 +107,13 @@ class PostController extends Controller
         return '';
     }
 
+    public function publish(Post $post)
+    {
+        $post->published = true;
+        $post->save();
+        return '';
+    }
+
     public function draft()
     {
         $posts = Post::unpublished()->get();

@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $posts = Post::published()->paginate(3);
+        $posts = Post::with('owner')->published()->paginate(3);
         return view('welcome', compact('posts'));
     }
 
@@ -27,9 +27,9 @@ class IndexController extends Controller
 
     public function search()
     {
-        $search = \Request::get('search');
-        $posts = Post::where('title', 'like', '%' . $search . '%')
-                        ->orderBy('title')->paginate(3);
+        $search = \Request::get('key');
+        $posts = Post::published()->where('title', 'like', '%' . $search . '%')
+                        ->orderBy('title')->get();
         return view('search', compact('posts'));
     }
 }
