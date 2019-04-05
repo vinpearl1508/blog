@@ -24,7 +24,7 @@
             <img src="{{ $post->thumbnail }}" alt="">
         </a>
         <p></p>
-        <p>{{ $post->body }}</p>
+        <p>{!! $post->body !!}</p>
         <div class="pager-area">
             <ul class="pager pull-right">
                 <li><a href="#">Pre</a></li>

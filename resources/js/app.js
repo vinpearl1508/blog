@@ -49,9 +49,9 @@ const router = new VueRouter({
             path: '/posts/create',
             name: 'posts.create',
             component: PostCreate,
-            meta: {
-                middleware: 'can:post.create'
-            }
+            // meta: {
+            //     middleware: 'can:post.create'
+            // }
         },
         {
             path: '/posts/edit/:id',

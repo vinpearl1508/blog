@@ -29,7 +29,6 @@
                   class="btn btn-xs btn-default"
                 >Edit</router-link>
                 <a
-                  href="#"
                   class="btn btn-xs btn-danger"
                   v-on:click="deleteEntry(post.id, index)"
                 >Delete</a>

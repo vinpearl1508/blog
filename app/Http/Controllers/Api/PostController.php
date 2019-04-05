@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -51,6 +52,10 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = Post::create($request->all());
+        // $post->user_id = Auth::user()->id;
+        // $post->user_id = 2;
+        // $post.save();
+        // auth()->user()->posts()->save($post);
         return $post;
     }
 
