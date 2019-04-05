@@ -2149,6 +2149,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2160,13 +2177,29 @@ __webpack_require__.r(__webpack_exports__);
       post: {
         title: "",
         slug: "",
+        thumbnail: "",
         description: "",
-        user_id: 1,
+        // user_id: 1,
         body: ""
       }
     };
   },
   methods: {
+    onImageChange: function onImageChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage: function createImage(file) {
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.post.thumbnail = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
     saveForm: function saveForm() {
       event.preventDefault();
       var app = this;
@@ -2447,6 +2480,9 @@ __webpack_require__.r(__webpack_exports__);
           alert("Could not delete post");
         });
       }
+    },
+    pathImage: function pathImage(filename) {
+      return "/images/" + filename;
     }
   }
 });
@@ -4409,6 +4445,33 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Post thumbnail")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _vm.post.thumbnail
+                      ? _c("div", { staticClass: "col-md-3" }, [
+                          _c("img", {
+                            staticClass: "img-responsive",
+                            attrs: {
+                              src: _vm.post.thumbnail,
+                              height: "70",
+                              width: "90"
+                            }
+                          })
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: { type: "file", id: "thumbnail" },
+                        on: { change: _vm.onImageChange }
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
                   _c("label", [_vm._v("Post description")]),
                   _vm._v(" "),
                   _c("textarea", {
@@ -4800,7 +4863,7 @@ var render = function() {
                   _c("td", [
                     _c("img", {
                       staticClass: "img-responsive",
-                      attrs: { src: post.thumbnail, alt: "" }
+                      attrs: { src: _vm.pathImage(post.thumbnail), alt: "" }
                     })
                   ]),
                   _vm._v(" "),

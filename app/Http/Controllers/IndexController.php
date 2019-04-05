@@ -31,6 +31,7 @@ class IndexController extends Controller
         $search = \Request::get('key');
         $posts = Post::published()->where('title', 'like', '%' . $search . '%')
             ->orderBy('title')->get();
+        if(count($posts) == 0) return 'dewdewde'; //this is a object not an array
         return view('search', compact('posts'));
     }
 }

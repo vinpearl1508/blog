@@ -22,6 +22,23 @@
             </div>
 
             <div class="form-group">
+              <label>Post thumbnail</label>
+              <div class="row">
+                <div class="col-md-3" v-if="post.thumbnail">
+                  <img :src="post.thumbnail" class="img-responsive" height="70" width="90">
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="file"
+                    v-on:change="onImageChange"
+                    id="thumbnail"
+                    class="form-control"
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label>Post description</label>
               <textarea v-model="post.description" cols="30" rows="2" class="form-control"></textarea>
             </div>
@@ -53,13 +70,27 @@ export default {
       post: {
         title: "",
         slug: "",
+        thumbnail: "",
         description: "",
-        user_id: 1,
-        body: "",
+        // user_id: 1,
+        body: ""
       }
     };
   },
   methods: {
+    onImageChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      let reader = new FileReader();
+      let vm = this;
+      reader.onload = e => {
+        vm.post.thumbnail = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
     saveForm() {
       event.preventDefault();
       var app = this;

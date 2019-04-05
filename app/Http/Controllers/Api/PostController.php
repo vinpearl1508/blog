@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -51,12 +53,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = Post::create($request->all());
+        // $post = Post::create($request->all());
         // $post->user_id = Auth::user()->id;
+        // dd(Auth::user());
         // $post->user_id = 2;
         // $post.save();
         // auth()->user()->posts()->save($post);
-        return $post;
+        // return $post;
+
+        $thumbnail = $request->get('thumbnail');
+        $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($thumbnail, 0, strpos($thumbnail, ';')))[1])[1];
+        
+        Image::make($request->get('thumbnail'))->save(public_path('images/') . $fileName);
+        Post::create([
+            'title'           => $request->input('title'),
+            'slug'            => $request->input('slug'),
+            'description'     => $request->input('description'),
+            'thumbnail'       => $fileName,
+            'body'            => $request->input('body'),
+            'user_id'         => Auth::user()->id,
+        ]);
+        return '';
     }
 
     /**

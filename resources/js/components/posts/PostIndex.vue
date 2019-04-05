@@ -21,7 +21,7 @@
               <td>{{ post.slug }}</td>
               <td>{{ post.description }}</td>
               <td>
-                <img v-bind:src="post.thumbnail" alt class="img-responsive">
+                <img v-bind:src="pathImage(post.thumbnail)" alt class="img-responsive">
               </td>
               <td>
                 <router-link
@@ -74,6 +74,9 @@ export default {
             alert("Could not delete post");
           });
       }
+    },
+    pathImage(filename){
+      return "/images/"+filename;
     }
   }
 };
