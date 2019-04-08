@@ -80,4 +80,4 @@
     @yield('script')
 </body>
 
-</html> 
+</html>

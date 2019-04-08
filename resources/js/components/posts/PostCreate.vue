@@ -67,6 +67,11 @@ export default {
       editorConfig: {
         //
       },
+      // categories: {
+      //   id: "",
+      //   name: "",
+      //   slug: ""
+      // },
       post: {
         title: "",
         slug: "",
@@ -77,6 +82,18 @@ export default {
       }
     };
   },
+  // mounted() {
+  //   var app = this;
+  //   this.axios
+  //     .get("/api/categories")
+  //     .then(function(resp) {
+  //       app.categories = resp.data;
+  //     })
+  //     .catch(function(resp) {
+  //       console.log(resp);
+  //       alert("Could not load categories");
+  //     });
+  // },
   methods: {
     onImageChange(e) {
       let files = e.target.files || e.dataTransfer.files;

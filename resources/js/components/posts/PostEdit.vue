@@ -6,18 +6,18 @@
         <form v-on:submit.prevent="saveForm()" enctype="multipart/form-data">
           <div class="col-md-8">
             <div class="form-group">
-              <label>Post Body</label>
+              <label>Post Content</label>
               <ckeditor :editor="editor" v-model="post.body" :config="editorConfig"></ckeditor>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label>Post Visibility</label>
               <select class="form-control" v-model="post.published" id="published">
                 <option :selected="post.published === 1" value="1">Public</option>
                 <option :selected="post.published === 0" value="0">Draft</option>
               </select>
-            </div>
+            </div>-->
             <div class="form-group">
               <label>Post Title</label>
               <input type="text" v-model="post.title" class="form-control">
@@ -39,7 +39,6 @@
                     type="file"
                     v-on:change="onImageChange"
                     id="thumbnail"
-                    ref="thumbnail"
                     class="form-control"
                   >
                 </div>
@@ -55,12 +54,12 @@
             <!--<label>Post Tag</label>-->
             <!--</div>-->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label>Post Category</label>
               <select class="form-control" v-model="post.category_id" id="category">
                 <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
               </select>
-            </div>
+            </div>-->
           </div>
           <button class="btn btn-success" type="submit">Save</button>
         </form>
@@ -86,15 +85,15 @@ export default {
         alert("Could not load your post");
       });
 
-    this.axios
-      .get("/api/categories")
-      .then(function(resp) {
-        app.categories = resp.data;
-      })
-      .catch(function(resp) {
-        console.log(resp);
-        alert("Could not load categories");
-      });
+    // this.axios
+    //   .get("/api/categories")
+    //   .then(function(resp) {
+    //     app.categories = resp.data;
+    //   })
+    //   .catch(function(resp) {
+    //     console.log(resp);
+    //     alert("Could not load categories");
+    //   });
   },
   data: function() {
     return {
@@ -102,25 +101,18 @@ export default {
       editorConfig: {
         //
       },
-      // tags: {
-      //     id: '',
-      //     name: '',
-      //     slug: ''
+      // categories: {
+      //   id: "",
+      //   name: "",
+      //   slug: ""
       // },
-      categories: {
-        id: "",
-        name: "",
-        slug: ""
-      },
       post: {
-        id: "",
         title: "",
         slug: "",
         thumbnail: "",
         description: "",
-        category_id: "",
-        body: "",
-        published: ""
+        // user_id: 1,
+        body: ""
       }
     };
   },
@@ -138,36 +130,18 @@ export default {
       };
       reader.readAsDataURL(file);
     },
-    handleFileChange(event) {
-      this.post.thumbnail = this.$refs.thumbnail.files[0];
-    },
     saveForm() {
-      let app = this;
-      let formData = new FormData();
-      let thumbnail = document.getElementById("thumbnail").files[0];
-      if (typeof thumbnail != "undefined") {
-        formData.append("thumbnail", thumbnail, thumbnail.name);
-      }
-      formData.append("_method", "PATCH");
-      formData.append("title", this.post.title);
-      formData.append("slug", this.post.slug);
-      formData.append("description", this.post.description);
-      formData.append("body", this.post.body);
-      formData.append("category_id", this.post.category_id);
-      formData.append("published", this.post.published);
-
-      this.axios
-        .post("/api/posts/${app.post.id}", formData, {
-          headers: { "content-type": "multipart/form-data" }
-        })
+      event.preventDefault();
+      var app = this;
+      var newPost = app.post;
+      axios
+        .patch("/api/posts/" + app.post.id, newPost)
         .then(function(resp) {
-          alert(resp.data.message);
-          // app.$router.replace('/posts');
+          app.$router.replace({ path: "/posts" });
         })
-        .catch(function(err) {
-          console.log(err);
-          // alert("Could not update your post");
-          alert(err.response.data.message);
+        .catch(function(resp) {
+          console.log(resp);
+          alert("Could not edit your post");
         });
     }
   }

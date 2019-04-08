@@ -26,12 +26,7 @@ class PostController extends Controller
 
     public function index()
     {
-        // return Post::all();
         $posts = Post::published()->get();
-        foreach ($posts as $post) {
-            if ($c = preg_match_all("/(public\/images\/)/is", $post->thumbnail, $matches))
-                $post->thumbnail = Storage::url($post->thumbnail);
-        }
         return $posts;
     }
 
@@ -53,19 +48,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // $post = Post::create($request->all());
-        // $post->user_id = Auth::user()->id;
-        // dd(Auth::user());
-        // $post->user_id = 2;
-        // $post.save();
-        // auth()->user()->posts()->save($post);
-        // return $post;
-
         $thumbnail = $request->get('thumbnail');
         $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($thumbnail, 0, strpos($thumbnail, ';')))[1])[1];
         
         Image::make($request->get('thumbnail'))->save(public_path('images/') . $fileName);
-        Post::create([
+        $post = Post::create([
             'title'           => $request->input('title'),
             'slug'            => $request->input('slug'),
             'description'     => $request->input('description'),
@@ -73,7 +60,8 @@ class PostController extends Controller
             'body'            => $request->input('body'),
             'user_id'         => Auth::user()->id,
         ]);
-        return '';
+        // $post->categories()->sync($request->categories);
+        return $post;
     }
 
     /**
@@ -84,10 +72,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        // return Post::findOrFail($id);.$post = $this->post->findOrFail($id);
         $post = Post::findOrFail($id);
-        if ($c = preg_match_all("/(public\/images\/)/is", $post['thumbnail'], $matches))
-            $post['thumbnail'] = Storage::url($post['thumbnail']);
         return $post;
     }
 
@@ -111,9 +96,18 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $thumbnail = $request->get('thumbnail');
+        $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($thumbnail, 0, strpos($thumbnail, ';')))[1])[1];
+        
+        Image::make($request->get('thumbnail'))->save(public_path('images/') . $fileName);
         $post = Post::findOrFail($id);
-        $post->update($request->all());
-        return $post;
+        $post->title = $request->input('title');
+        $post->slug = $request->input('slug');
+        $post->description = $request->input('description');
+        $post->thumbnail = $fileName;
+        $post->body = $request->input('body');
+        $post->save();
+        return '';
     }
 
     /**
@@ -140,10 +134,6 @@ class PostController extends Controller
     public function draft()
     {
         $posts = Post::unpublished()->get();
-        foreach ($posts as $post) {
-            if ($c = preg_match_all("/(public\/images\/)/is", $post->thumbnail, $matches))
-                $post->thumbnail = Storage::url($post->thumbnail);
-        }
         return $posts;
     }
 }
