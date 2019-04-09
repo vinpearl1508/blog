@@ -19,6 +19,11 @@ class Post extends Model
         return $this->belongsToMany(Category::class, 'category_post');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'post_tag');
+    }
+
     public function scopePublished($query)
     {
         return $query->where('published', true);

@@ -29,6 +29,7 @@ Route::prefix('api')->group(function () {
         'categories' => 'Api\CategoryController',
         'posts' => 'Api\PostController',
         'users' => 'Api\UserController',
+        'tags'  => 'Api\TagController',
     ]);
     Route::get('/draft', 'Api\PostController@draft');
     Route::get('/publish/{id}', 'Api\PostController@publish');
