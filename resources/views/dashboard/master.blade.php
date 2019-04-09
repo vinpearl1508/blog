@@ -57,9 +57,11 @@
     </div>
     <!-- ./wrapper -->
 
-    <script src="{{ mix('js/app.js') }}"></script>
+    
     <!-- jQuery 2.2.3 -->
     <script src="{{ asset('dashboard/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ asset('dashboard/plugins/jquery.dataTables.min.js') }}"></script>
+
     <!-- Bootstrap 3.3.6 -->
     <script src="{{ asset('dashboard/bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- PACE -->
@@ -70,6 +72,7 @@
     <script src="{{ asset('dashboard/plugins/fastclick/fastclick.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('dashboard/dist/js/app.min.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
     <!-- page script -->
     <script type="text/javascript">
         // To make Pace works on Ajax calls

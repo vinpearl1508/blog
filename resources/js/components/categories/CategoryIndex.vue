@@ -1,70 +1,44 @@
 <template>
-  <div class="row">
-    <div class="col-md-12">
-      <router-link :to="{name: 'categories.create'}" class="btn btn-success">Create new category</router-link>
-      <div class="box">
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Slug</th>
-              <th width="100">&nbsp;</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(category, index) in categories" :key="(category, index).id">
-              <td>{{ category.name }}</td>
-              <td>{{ category.slug }}</td>
-              <td>
-                <router-link
-                  :to="{name: 'categories.edit', params: {id: category.id}}"
-                  class="btn btn-xs btn-default"
-                >Edit</router-link>
-                <a class="btn btn-xs btn-danger" v-on:click="deleteEntry(category.id, index)">Delete</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <div class="container">
+    <h3>Vue Datatable example</h3>Filter by anything:
+    <input v-model="search">
+    <hr>
+    <DataTable :categories="filteredCategories"></DataTable>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import DataTable from "./DataTable.vue";
 export default {
-  data: function() {
+  components: {
+    'DataTable' :DataTable
+  },
+  data() {
     return {
-      categories: []
+      categories: [],
+      search: ""
     };
   },
-  mounted() {
-    var app = this;
-    axios
-      .get("/api/categories")
-      .then(function(resp) {
-        app.categories = resp.data;
-      })
-      .catch(function(resp) {
-        console.log(resp);
-        alert("Could not load category");
+  computed: {
+    filteredCategories: function() {
+      let self = this;
+      let search = self.search.toLowerCase();
+      return self.categories.filter(function(comments) {
+        return (
+          comments.name.toLowerCase().indexOf(search) !== -1 ||
+          comments.slug.toLowerCase().indexOf(search) !== -1
+        );
       });
-  },
-  methods: {
-    deleteEntry(id, index) {
-      if (confirm("Do you really want to delete it?")) {
-        var app = this;
-        axios
-          .delete("/api/categories/" + id)
-          .then(function(resp) {
-            app.categories.splice(index, 1);
-            app.$router.replace("/categories");
-          })
-          .catch(function(resp) {
-            alert("Could not delete category");
-          });
-      }
     }
+  },
+  mounted() {
+    let vm = this;
+    $.ajax({
+      url: "/api/categories",
+      success(res) {
+        vm.categories = res;
+      }
+    });
   }
 };
 </script>

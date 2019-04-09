@@ -50,7 +50,7 @@ const router = new VueRouter({
             name: 'posts.create',
             component: PostCreate,
             // meta: {
-            //     middleware: 'can:post.create'
+            //     middleware: auth
             // }
         },
         {
@@ -84,4 +84,5 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router,
+
 });
