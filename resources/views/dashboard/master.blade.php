@@ -12,6 +12,7 @@
     <!-- <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"> -->
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="{{ asset('dashboard/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -60,8 +61,7 @@
     
     <!-- jQuery 2.2.3 -->
     <script src="{{ asset('dashboard/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-    <script src="{{ asset('dashboard/plugins/jquery.dataTables.min.js') }}"></script>
-
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="{{ asset('dashboard/bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- PACE -->

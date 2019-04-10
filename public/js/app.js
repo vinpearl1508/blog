@@ -2005,9 +2005,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       headers: [{
+        title: "ID"
+      }, {
         title: "Name"
       }, {
         title: "Slug"
+      }, {
+        title: "Action"
       }],
       rows: [],
       dtHandle: null
@@ -2019,8 +2023,11 @@ __webpack_require__.r(__webpack_exports__);
       vm.rows = [];
       val.forEach(function (item) {
         var row = [];
+        row.push(item.id);
         row.push(item.name);
-        row.push(item.slug);
+        row.push(item.slug); // row.push('<router-link :to="{name: categories.edit, params: {id: item.id}}" class="btn btn-xs btn-default">Edit</router-link>');
+
+        row.push('<a class="btn btn-xs btn-danger" v-on:click="deleteEntry(item.id, index)">Delete</a>');
         vm.rows.push(row);
       });
       vm.dtHandle.clear();
@@ -2037,6 +2044,19 @@ __webpack_require__.r(__webpack_exports__);
       paging: true,
       info: false
     });
+  },
+  methods: {
+    deleteEntry: function deleteEntry(id, index) {
+      if (confirm("Do you really want to delete it?")) {
+        var app = this;
+        axios.delete("/api/categories/" + id).then(function (resp) {
+          app.categories.splice(index, 1);
+          app.$router.replace("/categories");
+        }).catch(function (resp) {
+          alert("Could not delete category");
+        });
+      }
+    }
   }
 });
 
@@ -4164,28 +4184,17 @@ var render = function() {
     { staticClass: "container" },
     [
       _c("h3", [_vm._v("Vue Datatable example")]),
-      _vm._v("Filter by anything:\n  "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.search,
-            expression: "search"
-          }
-        ],
-        domProps: { value: _vm.search },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.search = $event.target.value
-          }
-        }
-      }),
       _vm._v(" "),
       _c("hr"),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        {
+          staticClass: "btn btn-success",
+          attrs: { to: { name: "categories.create" } }
+        },
+        [_vm._v("Create new category")]
+      ),
       _vm._v(" "),
       _c("DataTable", { attrs: { categories: _vm.filteredCategories } })
     ],
@@ -20679,8 +20688,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/blog/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/blog/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\VienHT\code\blog\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\VienHT\code\blog\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

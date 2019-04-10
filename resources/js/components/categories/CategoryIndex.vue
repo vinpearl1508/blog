@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h3>Vue Datatable example</h3>Filter by anything:
-    <input v-model="search">
+    <h3>Vue Datatable example</h3>
     <hr>
+    <router-link :to="{name: 'categories.create'}" class="btn btn-success">Create new category</router-link>
     <DataTable :categories="filteredCategories"></DataTable>
   </div>
 </template>

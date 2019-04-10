@@ -13,7 +13,7 @@ export default {
   props: ["categories"],
   data() {
     return {
-      headers: [{ title: "Name" }, { title: "Slug" }],
+      headers: [{ title: "ID" }, { title: "Name" }, { title: "Slug" }, { title: "Action" }],
       rows: [],
       dtHandle: null
     };
@@ -24,8 +24,11 @@ export default {
       vm.rows = [];
       val.forEach(function(item) {
         let row = [];
+        row.push(item.id);
         row.push(item.name);
         row.push(item.slug);
+        // row.push('<router-link :to="{name: categories.edit, params: {id: item.id}}" class="btn btn-xs btn-default">Edit</router-link>');
+        row.push('<a class="btn btn-xs btn-danger" v-on:click="deleteEntry(item.id, index)">Delete</a>');
         vm.rows.push(row);
       });
       vm.dtHandle.clear();
@@ -40,8 +43,24 @@ export default {
       data: vm.rows,
       searching: true,
       paging: true,
-      info: false
+      info: false,
     });
+  },
+  methods: {
+    deleteEntry(id, index) {
+      if (confirm("Do you really want to delete it?")) {
+        var app = this;
+        axios
+          .delete("/api/categories/" + id)
+          .then(function(resp) {
+            app.categories.splice(index, 1);
+            app.$router.replace("/categories");
+          })
+          .catch(function(resp) {
+            alert("Could not delete category");
+          });
+      }
+    }
   }
 };
 </script>
