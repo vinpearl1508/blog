@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
         row.push(item.name);
         row.push(item.slug); // row.push('<router-link :to="{name: categories.edit, params: {id: item.id}}" class="btn btn-xs btn-default">Edit</router-link>');
 
-        row.push('<a class="btn btn-xs btn-danger" v-on:click="deleteEntry(item.id, index)">Delete</a>');
+        row.push('<a class="btn btn-xs btn-danger" data-id=23 v-on:click="deleteEntry(item.id, index)" >Delete</a>');
         vm.rows.push(row);
       });
       vm.dtHandle.clear();

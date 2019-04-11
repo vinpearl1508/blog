@@ -32,33 +32,12 @@ Route::prefix('api')->group(function () {
         'tags'  => 'Api\TagController',
     ]);
     Route::get('/draft', 'Api\PostController@draft');
-    Route::get('/publish/{id}', 'Api\PostController@publish');
+    // Route::get('/posts', 'Api\PostController@index');
+    // Route::get('/posts/show/{id}', 'PostController@show');
+    // Route::post('/posts/create', 'Api\PostController@store')->middleware('can:post.create');
+    // Route::post('/posts/edit/{id}', 'Api\PostController@update')->middleware('can:post.update,post');
+    Route::get('/publish/{id}', 'Api\PostController@publish')->middleware('can:post.publish');
 });
 Route::get('/admin/{vue?}', function () {
     return view('dashboard');
 })->where('vue', '[\/\w\.-]*')->middleware('auth');
-
-// Route::get('/posts', 'HomeController@index')->name('list_posts');
-// Route::group(['prefix' => 'posts'], function () {
-//     Route::get('/drafts', 'HomeController@drafts')
-//         ->name('list_drafts')
-//         ->middleware('auth');
-//     Route::get('/show/{id}', 'HomeController@show')
-//         ->name('show_post');
-//     Route::get('/create', 'HomeController@create')
-//         ->name('create_post')
-//         ->middleware('can:post.create');
-//     Route::post('/create', 'HomeController@store')
-//         ->name('store_post')
-//         ->middleware('can:post.create');
-//     Route::get('/edit/{post}', 'HomeController@edit')
-//         ->name('edit_post')
-//         ->middleware('can:post.update,post');
-//     Route::post('/edit/{post}', 'HomeController@update')
-//         ->name('update_post')
-//         ->middleware('can:post.update,post');
-//     Route::get('/publish/{post}', 'HomeController@publish')
-//         ->name('publish_post')
-//         ->middleware('can:post.publish');
-// });
-

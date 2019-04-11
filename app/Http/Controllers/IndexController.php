@@ -29,9 +29,9 @@ class IndexController extends Controller
     public function search()
     {
         $search = \Request::get('key');
+        $search = strtolower($search);
         $posts = Post::published()->where('title', 'like', '%' . $search . '%')
             ->orderBy('title')->get();
-        if(count($posts) == 0) return 'dewdewde'; //this is a object not an array
-        return view('search', compact('posts'));
+        return view('search', compact('posts', 'search'));
     }
 }

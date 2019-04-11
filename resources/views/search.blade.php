@@ -2,9 +2,9 @@
 @section('content')
 <div class="blog-post-area">
     <h2 class="title text-center">Result</h2>
-    @foreach($posts as $post)
+    @forelse($posts as $post)
     <div class="single-blog-post">
-        <h3>{{ $post->title }}</h3>
+        <h3>{!! str_replace( $search, '<b style="color:red">'.$search.'</b>', $post->title) !!}</h3>
         <div class="post-meta">
             <ul>
                 <li><i class="fa fa-user"></i> {{ $post->owner->name }}</li>
@@ -25,7 +25,9 @@
         <p>{{ $post->description }}</p>
         <a class="btn btn-primary" href="{{ route('singlePost', $post->id) }}">Read More</a>
     </div>
-    @endforeach
+    @empty
+    <h3>No result</h3>
+    @endforelse
 </div>
 
 @endsection 
