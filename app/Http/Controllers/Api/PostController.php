@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\Auth;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -21,6 +22,9 @@ class PostController extends Controller
     public function __construct(Post $post)
     {
         $this->middleware('auth');
+        $this->middleware('can:post.create')->only(['store']);
+        // $this->middleware('can:post.update')->only(['update']);
+        // $this->middleware('can:post.delete')->only('destroy');
         $this->post = $post;
     }
 
@@ -50,7 +54,7 @@ class PostController extends Controller
     {
         $thumbnail = $request->get('thumbnail');
         $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($thumbnail, 0, strpos($thumbnail, ';')))[1])[1];
-        
+
         Image::make($request->get('thumbnail'))->save(public_path('images/') . $fileName);
         $post = Post::create([
             'title'           => $request->input('title'),
@@ -60,6 +64,17 @@ class PostController extends Controller
             'body'            => $request->input('body'),
             'user_id'         => Auth::user()->id,
         ]);
+        // if ($post) {
+        //     $tagNames = explode(',',$request->get('tags'));
+        //     $tagIds = [];
+        //     foreach ($tagNames as $tagName) {
+        //         $tag = Tag::firstOrCreate(['name' => $tagName]);
+        //         if ($tag) {
+        //                 $tagIds[] = $tag->id;
+        //         }
+        //     }
+        //     $post->tags()->sync($tagIds);
+        // }
         // $post->categories()->sync($request->categories);
         return $post;
     }
@@ -98,7 +113,7 @@ class PostController extends Controller
     {
         $thumbnail = $request->get('thumbnail');
         $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($thumbnail, 0, strpos($thumbnail, ';')))[1])[1];
-        
+
         Image::make($request->get('thumbnail'))->save(public_path('images/') . $fileName);
         $post = Post::findOrFail($id);
         $post->title = $request->input('title');

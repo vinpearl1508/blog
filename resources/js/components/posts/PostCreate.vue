@@ -42,13 +42,17 @@
               <label>Post description</label>
               <textarea v-model="post.description" cols="30" rows="2" class="form-control"></textarea>
             </div>
+            <div class="form-group">
+              <label>Post tags</label>
+              <input type="text" value data-role="tagsinput">
+            </div>
 
             <!-- <div class="form-group">
               <label>Post Category</label>
               <select class="form-control" v-model="post.category_id" id="category">
                 <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
               </select>
-            </div> -->
+            </div>-->
           </div>
           <button class="btn btn-success" type="submit">Save</button>
         </form>

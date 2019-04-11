@@ -29,6 +29,12 @@
     <!-- Custom CSS -->
     {{--<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">--}}
 
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{{ asset('css/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/github.css">
+    <link rel="stylesheet" href="{{ asset('css/assets/app.css') }}"> -->
+
     @yield('stylesheet')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -73,12 +79,44 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('dashboard/dist/js/app.min.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="{{ asset('css/dist/bootstrap-tagsinput.min.js')}}"></script>
+    <script src="{{ asset('css/dist/bootstrap-tagsinput/bootstrap-tagsinput-angular.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/generic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/html.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/javascript.js"></script>
+    <script src="{{ asset('css/assets/app.js')}}"></script>
+    <script src="{{ asset('css/assets/app_bs3.js')}}"></script>
+    <script src="{{ asset('js/typeahead.bundle.js')}}"></script> -->
     <!-- page script -->
     <script type="text/javascript">
         // To make Pace works on Ajax calls
         $(document).ajaxStart(function() {
             Pace.restart();
         });
+
+        // var citynames = new Bloodhound({
+        //     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        //     queryTokenizer: Bloodhound.tokenizers.whitespace,
+        //     prefetch: {
+        //         url: 'http://blog.test/api/tags',
+        //     }
+        // });
+        // tags.initialize();
+
+        // $('input').tagsinput({
+        //     typeaheadjs: {
+        //         name: 'tags',
+        //         displayKey: 'tags',
+        //         valueKey: 'tags',
+        //         source: tags.ttAdapter()
+        //     }
+        // });
     </script>
     @yield('script')
 </body>

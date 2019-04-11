@@ -34,8 +34,9 @@ Route::prefix('api')->group(function () {
     Route::get('/draft', 'Api\PostController@draft');
     // Route::get('/posts', 'Api\PostController@index');
     // Route::get('/posts/show/{id}', 'PostController@show');
-    // Route::post('/posts/create', 'Api\PostController@store')->middleware('can:post.create');
-    // Route::post('/posts/edit/{id}', 'Api\PostController@update')->middleware('can:post.update,post');
+    // Route::post('/posts', 'Api\PostController@store')->middleware('can:post.create');
+    // Route::put('/posts/{id}', 'Api\PostController@update')->middleware('can:post.update,post');
+    // Route::delete('/posts/{id}', 'Api\PostController@destroy')->middleware('can:post.update,post');
     Route::get('/publish/{id}', 'Api\PostController@publish')->middleware('can:post.publish');
 });
 Route::get('/admin/{vue?}', function () {

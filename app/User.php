@@ -43,8 +43,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Checks if User has access to $permissions.
+     * Checks if User has access to $permissions. 
      */
+    //kiểm tra xem người dùng có quyền thực hiện một hành động nào đó không
     public function hasAccess(array $permissions) : bool
     {
         // check if the permission is available in any role
@@ -59,6 +60,7 @@ class User extends Authenticatable
     /**
      * Checks if the user belongs to role.
      */
+    //kiểm tra xem một người dùng có thuộc về một chức danh nào đó không.
     public function inRole(string $roleSlug)
     {
         return $this->roles()->where('slug', $roleSlug)->count() == 1;

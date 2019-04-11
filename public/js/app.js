@@ -2219,6 +2219,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4480,7 +4484,9 @@ var render = function() {
                       }
                     }
                   })
-                ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
               ]),
               _vm._v(" "),
               _c(
@@ -4496,7 +4502,20 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Post tags")]),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "text", value: "", "data-role": "tagsinput" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
