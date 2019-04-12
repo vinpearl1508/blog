@@ -33,7 +33,8 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag = Tag::create($request->all());
+        return $tag;
     }
 
     /**
@@ -44,7 +45,7 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        return Tag::findOrFail($id);
     }
 
     /**
@@ -56,7 +57,9 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        $tag->update($request->all());
+        return $tag;
     }
 
     /**
@@ -67,6 +70,8 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
+        return '';
     }
 }

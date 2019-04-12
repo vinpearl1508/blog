@@ -64,18 +64,20 @@ class PostController extends Controller
             'body'            => $request->input('body'),
             'user_id'         => Auth::user()->id,
         ]);
-        // if ($post) {
-        //     $tagNames = explode(',',$request->get('tags'));
-        //     $tagIds = [];
-        //     foreach ($tagNames as $tagName) {
-        //         $tag = Tag::firstOrCreate(['name' => $tagName]);
-        //         if ($tag) {
-        //                 $tagIds[] = $tag->id;
-        //         }
-        //     }
-        //     $post->tags()->sync($tagIds);
-        // }
-        // $post->categories()->sync($request->categories);
+   
+        $arTags = $request->tags;
+        foreach($arTags as $tag){
+            if(!empty($tag['id'])) {
+                $post->tags()->attach($tag['id']);
+            }else{
+                $newTag = new Tag();
+                $newTag->name = $tag['name'];
+                $newTag->slug = $tag['name'];
+                $newTag->save();
+                $addedTag = Tag::where('name', $newTag['name'])->first();
+                $post->tags()->attach($addedTag->id);
+            }
+        }
         return $post;
     }
 

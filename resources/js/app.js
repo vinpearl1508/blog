@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import CKEditor from '@ckeditor/ckeditor5-vue';
+import vSelect from 'vue-select';
 
 import CategoryIndex from './components/categories/CategoryIndex'
 import CategoryCreate from './components/categories/CategoryCreate'
@@ -17,9 +18,14 @@ import UserIndex from './components/users/UserIndex'
 import UserCreate from './components/users/UserCreate'
 import UserEdit from './components/users/UserEdit'
 
+import TagIndex from './components/tags/TagIndex'
+import TagCreate from './components/tags/TagCreate'
+import TagEdit from './components/tags/TagEdit'
+
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 Vue.use(CKEditor);
+Vue.component('v-select',vSelect);
 
 const router = new VueRouter({
     base: '/admin',
@@ -77,6 +83,21 @@ const router = new VueRouter({
             path: '/users/edit/:id',
             name: 'users.edit',
             component: UserEdit,
+        },
+        {
+            path: '/tags',
+            name: 'tags.list',
+            component: TagIndex,
+        },
+        {
+            path: '/tags/create',
+            name: 'tags.create',
+            component: TagCreate,
+        },
+        {
+            path: '/tags/edit/:id',
+            name: 'tags.edit',
+            component: TagEdit,
         },
     ],
 });

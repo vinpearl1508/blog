@@ -25,8 +25,8 @@
                 </router-link>
             </li>
             <li>
-                <router-link :to="{}" class="fa fa-rocket">
-                    <span> Role</span>
+                <router-link :to="{name: 'tags.list'}" class="fa fa-rocket">
+                    <span> Tag</span>
                 </router-link>
             </li>
             <li>
