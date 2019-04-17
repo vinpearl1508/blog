@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // $schedule->command('backup:clean'); // giữ lại số lượng file mà bạn đã config
+        $schedule->command('backup:run --only-db')->daily();  // backup dữ liệu
     }
 
     /**
