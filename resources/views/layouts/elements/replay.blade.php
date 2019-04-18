@@ -1,33 +1,21 @@
 <div class="replay-box">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-12">
             <h2>Leave a replay</h2>
-            <form>
+            <form action="{{route('postMessage')}}" method="post">
+                @csrf
                 <div class="blank-arrow">
-                    <label>Your Name</label>
+                    <label for="fname">Title</label>
                 </div>
                 <span>*</span>
-                <input type="text" placeholder="write your name...">
+                <input type="text" id="title" name="title" placeholder="Your Title..">
                 <div class="blank-arrow">
-                    <label>Email Address</label>
+                    <label for="subject">Content</label>
                 </div>
                 <span>*</span>
-                <input type="email" placeholder="your email address...">
-                <div class="blank-arrow">
-                    <label>Web Site</label>
-                </div>
-                <input type="email" placeholder="current city...">
+                <textarea type="tetx" id="content" name="content" placeholder="Write something.." rows="11"></textarea>
+                <input class="btn btn-primary" type="submit" value="Submit">
             </form>
-        </div>
-        <div class="col-sm-8">
-            <div class="text-area">
-                <div class="blank-arrow">
-                    <label>Your Name</label>
-                </div>
-                <span>*</span>
-                <textarea name="message" rows="11"></textarea>
-                <a class="btn btn-primary" href="#">post comment</a>
-            </div>
         </div>
     </div>
 </div>

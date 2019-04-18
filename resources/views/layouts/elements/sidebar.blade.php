@@ -7,7 +7,6 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a href="{{ route('postList', $category->id) }}" >
-                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
                         {{ $category->name }}
                     </a>
                 </h4>

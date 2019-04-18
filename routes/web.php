@@ -42,3 +42,6 @@ Route::prefix('api')->group(function () {
 Route::get('/admin/{vue?}', function () {
     return view('dashboard');
 })->where('vue', '[\/\w\.-]*')->middleware('auth');
+
+// Route::get('/send', 'SendMessageController@index')->name('send');
+Route::post('/postMessage', 'SendMessageController@sendMessage')->name('postMessage');
