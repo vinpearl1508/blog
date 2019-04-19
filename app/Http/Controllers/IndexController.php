@@ -15,7 +15,7 @@ class IndexController extends Controller
 
     public function show($id)
     {
-        $post = Post::published()->find($id);
+        $post = Post::with('comments')->published()->find($id);
         if (empty($post)) return abort(404);
         return view('singlePost', compact('post'));
     }

@@ -45,3 +45,4 @@ Route::get('/admin/{vue?}', function () {
 
 // Route::get('/send', 'SendMessageController@index')->name('send');
 Route::post('/postMessage', 'SendMessageController@sendMessage')->name('postMessage');
+Route::post('/postComment', 'CommentController@store')->name('postComment');

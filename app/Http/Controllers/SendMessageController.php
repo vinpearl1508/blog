@@ -17,7 +17,7 @@ class SendMessageController extends Controller
             'title' => 'required',
             'content' => 'required'
         ]);
-        
+
         $data['title'] = $request->input('title');
         $data['content'] = $request->input('content');
 

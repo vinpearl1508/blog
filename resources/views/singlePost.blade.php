@@ -33,6 +33,7 @@
         </div>
     </div>
 </div>
-@include("layouts.elements.response")
+@include('layouts.elements.response', ['comments' => $post->comments, 'post_id' => $post->id])
+{{-- @include("layouts.elements.response") --}}
 @include("layouts.elements.replay")
 @endsection 
