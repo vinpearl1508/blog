@@ -22,7 +22,6 @@ Route::get('search',['as'=>'search', 'uses'=>'IndexController@search']);
 Route::get('/postList/{id}', 'IndexController@posts')->name('postList');
 Route::get('/singlePost/{id}', 'IndexController@show')->name('singlePost');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('api')->group(function () {
     Route::apiResources([

@@ -28,16 +28,16 @@
     </div>
     <!--/header_top-->
 
-    {{-- <div class="header-middle">
+    <div class="header-middle">
         <!--header-middle-->
-        <!-- <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             @if (Route::has('login'))
                             @auth
-                            <li><a href="{{ route('home') }}"><i>Hello <b>{{ Auth::user()->name }}</b>!</i></a></li>
+                            <li><a href="/admin"><i>Hello <b>{{ Auth::user()->name }}</b>!</i></a></li>
                             @else
                             <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
 
@@ -50,9 +50,9 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
-    <!--/header-middle--> --}}
+    <!--/header-middle-->
 
     <div class="header-bottom">
         <!--header-bottom-->
@@ -120,4 +120,4 @@
     </div>
     <!--/header-bottom-->
 </header>
-<!--/header--> 
+<!--/header-->
